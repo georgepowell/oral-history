@@ -10,6 +10,7 @@ namespace OralHistory
         {
             bundles.Add(new ScriptBundle("~/bundles/OralHistoryApp")
                 .IncludeDirectory("~/Scripts/Controllers", "*.js")
+                .IncludeDirectory("~/Scripts/Factories", "*.js")
                 .Include("~/Scripts/OralHistoryApp.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(

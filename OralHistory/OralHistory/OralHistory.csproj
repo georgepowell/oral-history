@@ -144,6 +144,7 @@
     <None Include="Properties\PublishProfiles\OralHistory.pubxml" />
     <Content Include="Scripts\Controllers\LandingPageController.js" />
     <Content Include="Scripts\OralHistoryApp.js" />
+    <Content Include="Scripts\Factories\SearchFactory.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

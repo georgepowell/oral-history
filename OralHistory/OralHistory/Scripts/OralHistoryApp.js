@@ -1,6 +1,7 @@
 ﻿var OralHistoryApp = angular.module('OralHistoryApp', ['ngRoute']);
 
 OralHistoryApp.controller('LandingPageController', LandingPageController);
+OralHistoryApp.factory('SearchFactory', SearchFactory);
 
 var configFunction = function ($routeProvider) {
     $routeProvider.
