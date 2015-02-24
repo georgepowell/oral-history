@@ -26,7 +26,8 @@ namespace OralHistory.Controllers
 
             var results = await client.SearchAsync("interviews", new SearchQuery(q).SearchField("title").Count(true));
 
-            return new List<Interview> { new Interview() { Title = "Hello World!", Description = "This is a test", Transcription = "Blah blah blah this are words" } };
+            return results.Body.Records.Select(record => new Interview() { Title = (string)record.Properties["title"], Description = (string)record.Properties["description"], Transcription = (string)record.Properties["transcription"] });
+
         }
     }
 }

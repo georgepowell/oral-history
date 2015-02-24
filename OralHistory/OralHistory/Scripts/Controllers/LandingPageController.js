@@ -1,5 +1,5 @@
 ﻿var LandingPageController = function ($scope, SearchFactory) {
-    SearchFactory.search("document",
+    SearchFactory.search("attractive",
         function (data, status, headers, config) {
             console.log(data);
         },
