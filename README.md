@@ -1,4 +1,4 @@
-# 3rd year dissertation project - A website for browsing collections of Oral History.
+# A website for browsing collections of Oral History.
 
 ## What is Oral History?
 
