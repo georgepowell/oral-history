@@ -1,6 +1,6 @@
 ﻿var SearchFactory = function ($http) {
     var search = function (q, success, error) {
-        $http.get('/api/search/' + q).
+        $http.get('/api/search?q=' + q).
           success(success).
           error(error);
     }
