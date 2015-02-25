@@ -4,18 +4,15 @@
     <title ng-bind="models.helloAngular"></title>
 </head>
 <body>
-    <h1>{{models.helloAngular}}</h1>
 
-    <ul>
-        <li><a href="/#/routeOne">Route One</a></li>
-        <li><a href="/#/routeTwo">Route Two</a></li>
-        <li><a href="/#/routeThree">Route Three</a></li>
-    </ul>
+    <input type="text" ng-model="q" />
+
+    <a ng-href="/#/search/{{q}}">GO!</a>
+
 
     <div ng-view></div>
 
-    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-route.js"></script>
+    @Scripts.Render("~/bundles/Angular")
     @Scripts.Render("~/bundles/OralHistoryApp")
 </body>
 </html>

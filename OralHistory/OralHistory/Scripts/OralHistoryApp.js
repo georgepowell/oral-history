@@ -1,18 +1,13 @@
 ﻿var OralHistoryApp = angular.module('OralHistoryApp', ['ngRoute']);
 
 OralHistoryApp.controller('LandingPageController', LandingPageController);
+OralHistoryApp.controller('SearchController', SearchController);
 OralHistoryApp.factory('SearchFactory', SearchFactory);
 
 var configFunction = function ($routeProvider) {
-    $routeProvider.
-        when('/routeOne', {
-            templateUrl: 'routesDemo/one'
-        })
-        .when('/routeTwo', {
-            templateUrl: 'routesDemo/two'
-        })
-        .when('/routeThree', {
-            templateUrl: 'routesDemo/three'
+    $routeProvider.when('/search/:q', {
+        controller: 'SearchController',
+        templateUrl: '/Partials/Search',
         });
 }
 
