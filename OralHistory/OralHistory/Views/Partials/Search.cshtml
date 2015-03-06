@@ -1,14 +1,13 @@
 ﻿
-
-<div ng-repeat="result in results">
-    <p>
-        Title: {{ result.Title }}
-    </p>
-    <p>
-        Description: {{ result.Description }}
-    </p>
-    <p>
-        Transcription: {{ result.Transcription }}
-    </p>
-    <hr />
+<div ng-repeat="result in results" class="card type1">
+    <div class="header">
+        <p>
+            {{ result.Title }}
+        </p>
+    </div>
+    <div class="body">
+        <p>
+            {{ result.Transcription }}
+        </p>
+    </div>
 </div>

@@ -1,16 +1,28 @@
 ﻿<!DOCTYPE html>
 <html ng-app="OralHistoryApp" ng-controller="LandingPageController">
 <head>
+    <link href="~/Content/Site.css" rel="stylesheet" />
     <title ng-bind="models.helloAngular"></title>
 </head>
 <body>
 
-    <input type="text" ng-model="q" />
+    <div id="header">
+        <div class="mid">
+            <h1>
+                Oral History Browser
+            </h1>
 
-    <a ng-href="/#/search/{{q}}">GO!</a>
+            <input type="text" ng-model="q" />
 
+            <a ng-href="/#/search/{{q}}"><button>GO!</button></a>
+        </div>
+    </div>
 
-    <div ng-view></div>
+    <div id="body" class="mid">
+
+        <div ng-view></div>
+
+    </div>
 
     @Scripts.Render("~/bundles/Angular")
     @Scripts.Render("~/bundles/OralHistoryApp")
