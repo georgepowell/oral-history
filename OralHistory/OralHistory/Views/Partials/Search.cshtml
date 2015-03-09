@@ -1,13 +1,7 @@
 ﻿
-<div ng-repeat="result in results" class="card type1">
-    <div class="header">
-        <p>
-            {{ result.Title }}
-        </p>
-    </div>
-    <div class="body">
-        <p>
-            {{ result.Transcription }}
-        </p>
+<div ng-repeat="result in results" class="panel panel-default">
+    <div class="panel-heading">{{ result.Title }}</div>
+    <div class="panel-body">
+        {{ result.Transcription }}
     </div>
 </div>

@@ -1,27 +1,34 @@
 ﻿<!DOCTYPE html>
-<html ng-app="OralHistoryApp" ng-controller="LandingPageController">
+<html ng-app="OralHistoryApp">
 <head>
     <link href="~/Content/Site.css" rel="stylesheet" />
-    <title ng-bind="models.helloAngular"></title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <title>Browsing Oral History</title>
 </head>
-<body>
+<body ng-controller="LandingPageController">
 
-    <div id="header">
-        <div class="mid">
-            <h1>
-                Oral History Browser
-            </h1>
+    <header class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand">Browsing Oral History</a>
+            </div>
 
-            <input type="text" ng-model="q" />
-
-            <a ng-href="/#/search/{{q}}"><button>GO!</button></a>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <form class="navbar-form navbar-right" role="search" ng-submit="navigateSearch()">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search" ng-model="q">
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+            </div>
         </div>
-    </div>
+    </header>
 
-    <div id="body" class="mid">
+    <div class="container">
 
-        <div ng-view></div>
+        <div ng-view>
 
+        </div>
     </div>
 
     @Scripts.Render("~/bundles/Angular")

@@ -1,20 +1,8 @@
-﻿var LandingPageController = function ($scope, $routeParams, SearchFactory) {
+﻿var LandingPageController = function ($scope, $location) {
 
-
-    this.performSearch = function () {
-        SearchFactory.search($routeParams.q || "attractive",
-            function (data, status, headers, config) {
-                $scope.results = data;
-            },
-            function (data, status, headers, config) {
-                console.log(data);
-            }
-            );
-    }
-
-    $scope.models = {
-        helloAngular: 'I work!'
+    $scope.navigateSearch = function () {
+        $location.hash("/search/" + $scope.q);
     };
 }
 
-LandingPageController.$inject = ['$scope', '$routeParams', 'SearchFactory'];
+LandingPageController.$inject = ['$scope', '$location'];
