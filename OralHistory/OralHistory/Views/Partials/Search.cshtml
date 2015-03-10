@@ -1,7 +1,11 @@
 ﻿
-<div ng-repeat="result in results" class="panel panel-default">
-    <div class="panel-heading">{{ result.Title }}</div>
-    <div class="panel-body">
-        {{ result.Transcription }}
+<p>{{ results.length }} results for {{ q }} </p>
+
+<div ng-repeat="result in results" class="search-result col-md-4">
+    <div class="panel panel-default">
+        <div class="panel-heading"><a ng-href="/#/interview/{{result.Id}}">{{ result.Title }}</a></div>
+        <div class="panel-body">
+            <p class="transcription">{{ result.Transcription }}</p>
+        </div>
     </div>
 </div>

@@ -9,7 +9,7 @@ namespace AwesomeAngularMVCApp.Controllers
             return View();
         }
 
-        public ActionResult Home()
+        public ActionResult Interview()
         {
             return View();
         }

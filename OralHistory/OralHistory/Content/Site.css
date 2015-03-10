@@ -1,1 +1,11 @@
-﻿
+﻿.search-result .transcription {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 8;
+    -webkit-box-orient: vertical;
+}
+
+.search-result {
+    height: 300px;
+}

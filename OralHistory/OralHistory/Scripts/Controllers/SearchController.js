@@ -1,6 +1,8 @@
-﻿var SearchController = function ($scope, $routeParams, SearchFactory) {
+﻿var SearchController = function ($scope, $routeParams, Interviews) {
+    $scope.$parent.q = $routeParams.q;
+    $scope.q = $routeParams.q;
 
-    SearchFactory.search($routeParams.q || "attractive",
+    Interviews.search($routeParams.q,
         function (data, status, headers, config) {
             $scope.results = data;
         },
@@ -10,4 +12,4 @@
         );
 }
 
-SearchController.$inject = ['$scope', '$routeParams', 'SearchFactory'];
+SearchController.$inject = ['$scope', '$routeParams', 'Interviews'];

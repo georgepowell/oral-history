@@ -1,8 +1,9 @@
-﻿var LandingPageController = function ($scope, $location) {
-
+﻿var LandingPageController = function ($scope, $location, $routeParams) {
     $scope.navigateSearch = function () {
-        $location.hash("/search/" + $scope.q);
+        $location.path("/search/" + $scope.q);
     };
+
+    $scope.q = $routeParams.q;
 }
 
-LandingPageController.$inject = ['$scope', '$location'];
+LandingPageController.$inject = ['$scope', '$location', '$routeParams'];

@@ -23,10 +23,15 @@ namespace OralHistory.Controllers
 
             ApiConnection connection = ApiConnection.Create("oralhistory", connString);
             var client = new IndexQueryClient(connection);
-
             var results = await client.SearchAsync("interviews", new SearchQuery(q).Count(true));
 
-            return results.Body.Records.Select(record => new Interview() { Title = (string)record.Properties["title"], Description = (string)record.Properties["description"], Transcription = (string)record.Properties["transcription"] });
+            return results.Body.Records.Select(record => new Interview() 
+            { 
+                Title = (string)record.Properties["title"],
+                Description = (string)record.Properties["description"],
+                Transcription = (string)record.Properties["transcription"],
+                Id = (string)record.Properties["id"],
+            });
         }
     }
 }
