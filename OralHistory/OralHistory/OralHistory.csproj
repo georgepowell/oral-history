@@ -138,6 +138,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\AudioDemo.css" />
+    <Content Include="Content\audio\joyce.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\audio\joyce.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
