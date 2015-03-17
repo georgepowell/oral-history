@@ -13,5 +13,10 @@ namespace AwesomeAngularMVCApp.Controllers
         {
             return View();
         }
+
+        public ActionResult AudioDemo()
+        {
+            return View();
+        }
     }
 }
