@@ -1,4 +1,4 @@
-﻿var OralHistoryApp = angular.module('OralHistoryApp', ['ngRoute']);
+﻿var OralHistoryApp = angular.module('OralHistoryApp', ['ngRoute', 'ngSanitize']);
 
 OralHistoryApp.controller('LandingPageController', LandingPageController);
 OralHistoryApp.controller('SearchController', SearchController);

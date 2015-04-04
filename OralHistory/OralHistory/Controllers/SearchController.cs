@@ -16,21 +16,29 @@ namespace OralHistory.Controllers
     public class SearchController : ApiController
     {
         // GET api/<controller>
-        public async Task<IEnumerable<Interview>> Get(string q)
+        public async Task<IEnumerable<SearchResultViewModel>> Get(string q)
         {
             var apiKey = ConfigurationManager.ConnectionStrings["SearchAPIKey"];
             string connString = apiKey.ConnectionString;
 
             ApiConnection connection = ApiConnection.Create("oralhistory", connString);
             var client = new IndexQueryClient(connection);
-            var results = await client.SearchAsync("interviews", new SearchQuery(q).Count(true));
 
-            return results.Body.Records.Select(record => new Interview() 
-            { 
-                Title = (string)record.Properties["title"],
-                Description = (string)record.Properties["description"],
-                Transcription = (string)record.Properties["transcription"],
+            var results = await client.SearchAsync("interviews", new SearchQuery(q) 
+            {
+                Highlight = "automatictranscription,summary,interviewer,interviewee,manualtranscription"
+            }.Count(true));
+
+
+            return results.Body.Records.Select(record => new SearchResultViewModel()
+            {
                 Id = (string)record.Properties["id"],
+                Title = (string)record.Properties["title"],
+                Highlights = record.Highlights.Keys.Select(key => new HighlightResult()
+                {
+                     Field = key,
+                     Highlights = record.Highlights[key]
+                }).ToList()
             });
         }
     }

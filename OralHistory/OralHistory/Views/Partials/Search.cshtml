@@ -1,11 +1,18 @@
 ﻿
 <p>{{ results.length }} results for {{ q }} </p>
 
-<div ng-repeat="result in results" class="search-result col-md-4">
+<div ng-repeat="result in results" class="search-result">
+
     <div class="panel panel-default">
         <div class="panel-heading"><a ng-href="/#/interview/{{result.Id}}">{{ result.Title }}</a></div>
         <div class="panel-body">
-            <p class="transcription">{{ result.Transcription }}</p>
+            <div ng-repeat="highlightResult in result.Highlights">
+                <h4>{{ highlightResult.Field }}</h4>
+                <ul>
+                    <li ng-repeat="highlight in highlightResult.Highlights" ng-bind-html="'... ' + highlight + '...'"></li>
+                </ul>
+            </div>
         </div>
     </div>
+
 </div>

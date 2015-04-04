@@ -2,9 +2,34 @@
 <h3>Interview</h3>
 
 <div class="panel panel-default">
+    <iframe width="100%"
+            height="166"
+            scrolling="no"
+            frameborder="no"
+            ng-src="{{interview.SoundcloudUrl}}"></iframe>
+
     <div class="panel-heading">{{ interview.Title }}</div>
     <div class="panel-body">
-        <p><strong>Description:</strong> {{ interview.Description }}</p>
-        <p><strong>Transcription:</strong> {{ interview.Transcription }}</p>
+        <p><strong>Date:</strong> {{ interview.DateOfInterview }}</p>
+        <p><strong>Interviewee:</strong> {{ interview.Interviewee }}</p>
+        <p><strong>Interviewer:</strong> {{ interview.Interviewer }}</p>
+    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">Summary</div>
+    <div class="panel-body">
+        <p ng-repeat="line in interview.SummaryLines">{{ line }}</p>
+    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">Automatic Transcription</div>
+    <div class="panel-body">
+        <p ng-repeat="segment in interview.AutomaticTranscription.Segments"><strong>{{segment.StartTime}}:</strong>{{ segment.Sentence }}</p>
+    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">Manual Transcription</div>
+    <div class="panel-body">
+        <p>{{ interview.ManualTranscription }}</p>
     </div>
 </div>

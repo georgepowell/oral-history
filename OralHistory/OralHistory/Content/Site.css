@@ -6,6 +6,6 @@
     -webkit-box-orient: vertical;
 }
 
-.search-result {
-    height: 300px;
+em {
+    text-decoration: underline;
 }

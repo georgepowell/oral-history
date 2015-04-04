@@ -1,4 +1,6 @@
 ﻿var SearchController = function ($scope, $routeParams, Interviews) {
+    window.SCOPE = $scope;
+
     $scope.$parent.q = $routeParams.q;
     $scope.q = $routeParams.q;
 

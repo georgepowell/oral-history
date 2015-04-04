@@ -11,3 +11,4 @@
 /// <reference path="controllers/interviewcontroller.js" />
 /// <reference path="factories/interviewsapifactory.js" />
 /// <reference path="audiodemo.js" />
+/// <reference path="angular-sanitize.js" />
