@@ -18,3 +18,21 @@ a {
     cursor: pointer;
     text-decoration: underline;
 }
+
+.segment.active {
+    font-weight: bold;
+    color: lightgreen;
+}
+
+.lines {
+    height: 500px;
+    overflow-y: scroll;
+}
+
+#details .details-table  {
+    max-width: 400px;
+}
+
+.interview-search {
+    max-width: 400px;
+}

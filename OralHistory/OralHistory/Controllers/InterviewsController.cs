@@ -16,6 +16,7 @@ using Microsoft.WindowsAzure.Storage.Blob;
 using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
+using OralHistory.Services;
 
 namespace OralHistory.Controllers
 {
@@ -37,6 +38,20 @@ namespace OralHistory.Controllers
             container = blobClient.GetContainerReference("oralhistory");
         }
 
+
+        public async Task<IEnumerable<Segment>> Get(string id, string query)
+        {
+            CloudBlockBlob blockBlob = container.GetBlockBlobReference(id);
+
+            var fromServer = container.GetBlockBlobReference(id);
+            string json = await fromServer.DownloadTextAsync();
+            Interview rtn = JsonConvert.DeserializeObject<Interview>(json);
+
+            return InterviewSearch.SearchInterview(rtn.AutomaticTranscription, query);
+        }
+
+
+
         // GET api/<controller>
         public async Task<Interview> Get(string id)
         {
@@ -50,7 +65,8 @@ namespace OralHistory.Controllers
 
         public async Task<IEnumerable<Interview>> Get()
         {
-
+            return container.ListBlobs().Select(blob =>
+                JsonConvert.DeserializeObject<Interview>(container.GetBlockBlobReference(blob.Uri.ToString().Split('/').Last()).DownloadText()));
         }
     }
 }

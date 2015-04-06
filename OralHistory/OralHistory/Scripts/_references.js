@@ -14,3 +14,4 @@
 /// <reference path="angular-sanitize.js" />
 /// <reference path="bootstrap.js" />
 /// <reference path="soundcloud.js" />
+/// <reference path="controllers/homecontroller.js" />

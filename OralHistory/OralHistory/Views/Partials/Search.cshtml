@@ -1,9 +1,13 @@
 ﻿
-<p>{{ results.length }} results for {{ q }} </p>
+
+<h1 ng-if="!results">Please wait...</h1>
+
+
+<p ng-if ="results">{{ results.length }} results for {{ q }} </png-if>
 
 <div ng-repeat="result in results" class="search-result">
 
-    <h2><a ng-href="/#/interview/{{result.Id}}">{{ result.Title }}</a></h2>
+    <h2><a ng-href="/#/interview/{{result.Id}}/search/{{q}}">{{ result.Title }}</a></h2>
     <div ng-repeat="highlightResult in result.Highlights">
         <h4>{{ highlightResult.Field }}</h4>
         <ul>

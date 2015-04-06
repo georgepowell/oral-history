@@ -11,8 +11,22 @@
           error(error);
     }
 
+    var allInterviews = function (success, error) {
+        $http.get('/api/interviews').
+          success(success).
+          error(error);
+    }
+
+    var searchInterview = function (id, query, success, error) {
+        $http.get('/api/interviews?id=' + id + '&query=' + encodeURIComponent(query)).
+          success(success).
+          error(error);
+    }
+
     return {
         search: search,
+        searchInterview: searchInterview,
+        allInterviews: allInterviews,
         lookup: lookup
     };
 }

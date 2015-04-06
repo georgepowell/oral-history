@@ -1,0 +1,10 @@
+﻿
+
+<h1 ng-if="!allInterviews">Loading interviews...</h1>
+
+<div ng-repeat="interview in allInterviews">
+    <h2><a ng-href="/#/interview/{{interview.id}}">{{interview.Title}}</a></h2>
+    <p><strong>Interviewee:</strong> {{ interview.Interviewee }}</p>
+    <p><strong>Interviewer:</strong> {{ interview.Interviewer }}</p>
+    <p><strong>Date:</strong> {{ interview.DateOfInterview }}</p>
+</div>

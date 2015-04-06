@@ -68,6 +68,9 @@
     <Reference Include="RedDog.Search">
       <HintPath>..\packages\RedDog.Search.0.5.2.0\lib\net45\RedDog.Search.dll</HintPath>
     </Reference>
+    <Reference Include="StemmersNet">
+      <HintPath>..\packages\StemmersNet.1.1.1.0\lib\net20\StemmersNet.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -163,6 +166,10 @@
     <Compile Include="Models\Segment.cs" />
     <Compile Include="Models\Transcription.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Documents.cs" />
+    <Compile Include="Services\DocumentVector.cs" />
+    <Compile Include="Services\InterviewSearch.cs" />
+    <Compile Include="Services\StopWords.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\AudioDemo.css" />
@@ -188,6 +195,7 @@
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\AudioDemo.js" />
     <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\Controllers\HomeController.js" />
     <Content Include="Scripts\Controllers\LandingPageController.js" />
     <Content Include="Scripts\Controllers\InterviewController.js" />
     <Content Include="Scripts\Controllers\SearchController.js" />
@@ -213,6 +221,7 @@
     <Content Include="Views\Partials\Search.cshtml" />
     <Content Include="Scripts\jquery-2.1.3.min.map" />
     <Content Include="Views\Partials\AudioDemo.cshtml" />
+    <Content Include="Views\Partials\Home.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
