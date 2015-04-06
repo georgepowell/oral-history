@@ -19,6 +19,9 @@ namespace OralHistory
                 .Include("~/Scripts/angular-sanitize.js")
                 .Include("~/Scripts/angular-ui/ui-bootstrap-tpls.min.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/Bootstrap")
+                .Include("~/Scripts/bootstrap.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/site.css"));
         }

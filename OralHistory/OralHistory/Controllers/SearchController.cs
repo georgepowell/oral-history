@@ -24,7 +24,7 @@ namespace OralHistory.Controllers
             ApiConnection connection = ApiConnection.Create("oralhistory", connString);
             var client = new IndexQueryClient(connection);
 
-            var results = await client.SearchAsync("interviews", new SearchQuery(q) 
+            var results = await client.SearchAsync("interviews", new SearchQuery(q)
             {
                 Highlight = "automatictranscription,summary,interviewer,interviewee,manualtranscription"
             }.Count(true));
@@ -36,10 +36,20 @@ namespace OralHistory.Controllers
                 Title = (string)record.Properties["title"],
                 Highlights = record.Highlights.Keys.Select(key => new HighlightResult()
                 {
-                     Field = key,
-                     Highlights = record.Highlights[key]
+                    Field = ReadableKeys[key],
+                    Highlights = record.Highlights[key]
                 }).ToList()
             });
         }
+
+        static Dictionary<string, string> ReadableKeys = new Dictionary<string, string>
+        {
+            {"manualtranscription", "Manual Transcription"},
+            {"summary", "Summary"},
+            {"automatictranscription", "Automatic Transcription"},
+            {"interviewer", "Interviewer"},
+            {"interviewee", "Interviewee"},
+            
+        };
     }
 }

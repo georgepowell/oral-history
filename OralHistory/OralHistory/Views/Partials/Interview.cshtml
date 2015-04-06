@@ -1,35 +1,58 @@
-﻿
-<h3>Interview</h3>
+﻿<iframe width="100%"
+        height="166"
+        scrolling="no"
+        frameborder="no"
+        ng-src="{{interview.SoundcloudUrl}}"
+        id="soundcloud_player"></iframe>
 
-<div class="panel panel-default">
-    <iframe width="100%"
-            height="166"
-            scrolling="no"
-            frameborder="no"
-            ng-src="{{interview.SoundcloudUrl}}"></iframe>
+<br />
 
-    <div class="panel-heading">{{ interview.Title }}</div>
-    <div class="panel-body">
-        <p><strong>Date:</strong> {{ interview.DateOfInterview }}</p>
-        <p><strong>Interviewee:</strong> {{ interview.Interviewee }}</p>
-        <p><strong>Interviewer:</strong> {{ interview.Interviewer }}</p>
+
+
+<div role="tabpanel">
+
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" ng-class="{ active: selectedTab === 'details' }">  <a ng-click="setTab('details')" aria-controls="details" role="tab" data-toggle="tab">Details</a></li>
+        <li role="presentation" ng-class="{ active: selectedTab === 'summary' }">  <a ng-click="setTab('summary')" aria-controls="summary" role="tab" data-toggle="tab">Summary</a></li>
+        <li role="presentation" ng-class="{ active: selectedTab === 'manual' }">   <a ng-click="setTab('manual')"  aria-controls="manual" role="tab" data-toggle="tab">Manual Transcription</a></li>
+        <li role="presentation" ng-class="{ active: selectedTab === 'automatic' }"><a ng-click="setTab('automatic')" aria-controls="automatic" role="tab" data-toggle="tab">Automatic Transcription</a></li>
+        <li role="presentation" ng-class="{ active: selectedTab === 'search' }">   <a ng-click="setTab('search')" aria-controls="search" role="tab" data-toggle="tab">Search</a></li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane" ng-class="{ active: selectedTab === 'details' }" id="details">
+            <h2>Details</h2>
+            <p><strong>Interviewee:</strong> {{ interview.Interviewee }}</p>
+            <p><strong>Interviewer:</strong> {{ interview.Interviewer }}</p>
+            <p><strong>Date:</strong> {{ interview.DateOfInterview }}</p>
+        </div>
+        <div role="tabpanel" class="tab-pane" ng-class="{ active: selectedTab === 'summary' }" id="summary">
+            <h2>Summary</h2>
+            <p ng-repeat="line in interview.SummaryLines track by $index"
+               ng-click="seek(interview.SummaryTimes[$index])"
+               ng-class="{'time-link': (interview.SummaryTimes[$index] != 0)}">
+                <strong ng-if="interview.SummaryTimes[$index] != 0">{{interview.SummaryTimes[$index]}}:  </strong>{{ line }}
+            </p>
+        </div>
+        <div role="tabpanel" class="tab-pane" ng-class="{ active: selectedTab === 'manual' }" id="manual">
+            <h2>Manual Transcription</h2>
+            <p>{{ interview.ManualTranscription }}</p>
+        </div>
+        <div role="tabpanel" class="tab-pane" ng-class="{ active: selectedTab === 'automatic' }" id="automatic">
+            <h2>Automatic Transcription</h2>
+            <p class="time-link"
+               ng-repeat="segment in interview.AutomaticTranscription.Segments track by $index"
+               ng-click="seek(segment.StartTime)"><strong>{{segment.StartTime}}:   </strong>{{ segment.Sentence }}</p>
+        </div>
+        <div role="tabpanel" class="tab-pane" ng-class="{ active: selectedTab === 'search' }" id="search">
+            <h1>Hello World this is Search!!!</h1>
+        </div>
     </div>
+
 </div>
-<div class="panel panel-default">
-    <div class="panel-heading">Summary</div>
-    <div class="panel-body">
-        <p ng-repeat="line in interview.SummaryLines">{{ line }}</p>
-    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading">Automatic Transcription</div>
-    <div class="panel-body">
-        <p ng-repeat="segment in interview.AutomaticTranscription.Segments"><strong>{{segment.StartTime}}:</strong>{{ segment.Sentence }}</p>
-    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading">Manual Transcription</div>
-    <div class="panel-body">
-        <p>{{ interview.ManualTranscription }}</p>
-    </div>
-</div>
+
+
+
+

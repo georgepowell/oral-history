@@ -10,6 +10,12 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using Microsoft.Azure.Documents.Linq;
 using System.Linq;
+using Microsoft.WindowsAzure.Storage.Auth;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Blob;
+using Newtonsoft.Json;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace OralHistory.Controllers
 {
@@ -17,26 +23,34 @@ namespace OralHistory.Controllers
     {
         static string databaseStr = "wZ4-AA==";
         static string collStr = "wZ4-AOlfZwA=";
+        CloudStorageAccount acc;
+        StorageCredentials creds;
+        CloudBlobClient blobClient;
+        CloudBlobContainer container;
+
+        public InterviewsController() : base()
+        {
+            creds = new StorageCredentials("gpowell", ConfigurationManager.ConnectionStrings["BlobAPIKey"].ConnectionString);
+            acc = new CloudStorageAccount(creds, true);
+
+            blobClient = acc.CreateCloudBlobClient();
+            container = blobClient.GetContainerReference("oralhistory");
+        }
 
         // GET api/<controller>
         public async Task<Interview> Get(string id)
         {
-            var apiKey = ConfigurationManager.ConnectionStrings["DocumentAPIKey"];
-            string connString = apiKey.ConnectionString;
-            DocumentClient client;
+            CloudBlockBlob blockBlob = container.GetBlockBlobReference(id);
 
-            DocumentCollection collection;
-            string collectionLink = String.Format("dbs/{0}/colls/{1}", databaseStr, collStr);
-            string documentLink = String.Format("dbs/{0}/colls/{1}/docs/{2}", databaseStr, collStr, id);
-            client = new DocumentClient(new Uri("https://oralhistory.documents.azure.com:443/"), connString);
-            collection = await client.ReadDocumentCollectionAsync(collectionLink);
+            var fromServer = container.GetBlockBlobReference(id);
+            string json = await fromServer.DownloadTextAsync();
+            Interview rtn = JsonConvert.DeserializeObject<Interview>(json);
+            return rtn;
+        }
 
-            return client.
-                CreateDocumentQuery<Interview>(collection.DocumentsLink)
-                .Where(n => n.id == id)
-                .Select(n => n)
-                .ToList()
-                .FirstOrDefault();
+        public async Task<IEnumerable<Interview>> Get()
+        {
+
         }
     }
 }

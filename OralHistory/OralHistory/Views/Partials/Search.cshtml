@@ -3,7 +3,16 @@
 
 <div ng-repeat="result in results" class="search-result">
 
-    <div class="panel panel-default">
+    <h2><a ng-href="/#/interview/{{result.Id}}">{{ result.Title }}</a></h2>
+    <div ng-repeat="highlightResult in result.Highlights">
+        <h4>{{ highlightResult.Field }}</h4>
+        <ul>
+            <li ng-repeat="highlight in highlightResult.Highlights" ng-bind-html="'... ' + highlight + '...'"></li>
+        </ul>
+    </div>
+    <hr />
+
+    <!--<div class="panel panel-default">
         <div class="panel-heading"><a ng-href="/#/interview/{{result.Id}}">{{ result.Title }}</a></div>
         <div class="panel-body">
             <div ng-repeat="highlightResult in result.Highlights">
@@ -13,6 +22,6 @@
                 </ul>
             </div>
         </div>
-    </div>
+    </div>-->
 
 </div>

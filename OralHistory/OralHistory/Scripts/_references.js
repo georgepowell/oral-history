@@ -12,3 +12,5 @@
 /// <reference path="factories/interviewsapifactory.js" />
 /// <reference path="audiodemo.js" />
 /// <reference path="angular-sanitize.js" />
+/// <reference path="bootstrap.js" />
+/// <reference path="soundcloud.js" />

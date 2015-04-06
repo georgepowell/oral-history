@@ -9,3 +9,12 @@
 em {
     text-decoration: underline;
 }
+
+a {
+    cursor: pointer;
+}
+
+.time-link {
+    cursor: pointer;
+    text-decoration: underline;
+}
