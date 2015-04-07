@@ -20,7 +20,7 @@
         <ul class="nav nav-tabs" role="tablist">
             <li role="presentation" ng-class="{ active: selectedTab === 'details' }">  <a ng-click="setTab('details')" aria-controls="details" role="tab" data-toggle="tab">Details</a></li>
             <li role="presentation" ng-class="{ active: selectedTab === 'summary' }">  <a ng-click="setTab('summary')" aria-controls="summary" role="tab" data-toggle="tab">Summary</a></li>
-            <li role="presentation" ng-class="{ active: selectedTab === 'manual' }">   <a ng-click="setTab('manual')" aria-controls="manual" role="tab" data-toggle="tab">Manual Transcription</a></li>
+            <li role="presentation" ng-class="{ active: selectedTab === 'manual' }" ng-if="interview.ManualTranscription.length > 0">   <a ng-click="setTab('manual')" aria-controls="manual" role="tab" data-toggle="tab">Manual Transcription</a></li>
             <li role="presentation" ng-class="{ active: selectedTab === 'automatic' }"><a ng-click="setTab('automatic')" aria-controls="automatic" role="tab" data-toggle="tab">Automatic Transcription</a></li>
             <li role="presentation" ng-class="{ active: selectedTab === 'search' }">   <a ng-click="setTab('search')" aria-controls="search" role="tab" data-toggle="tab">Search</a></li>
         </ul>
@@ -46,6 +46,13 @@
             </div>
             <div role="tabpanel" class="tab-pane" ng-class="{ active: selectedTab === 'summary' }" id="summary">
                 <h2>Summary</h2>
+
+                <p ng-if="interview.SummaryLines && interview.SummaryLines.length > 0">
+                    <img width="50" height="50" src="https://metroui.org.ua/images/word2013icon.png" />
+                    <a target="_blank" ng-href="http://gpowell.blob.core.windows.net/files/SummaryFor{{interview.id}}.docx">SummaryFor{{interview.id}}.docx
+                    </a>
+                </p>
+
                 <div class="lines">
                     <table class="table table-bordered">
                         <tr ng-repeat="line in interview.SummaryLines track by $index">
@@ -65,8 +72,15 @@
 
                 </div>
             </div>
-            <div role="tabpanel" class="tab-pane" ng-class="{ active: selectedTab === 'manual' }" id="manual">
+            <div ng-if="interview.ManualTranscription.length > 0" role="tabpanel" class="tab-pane" ng-class="{ active: selectedTab === 'manual' }" id="manual">
                 <h2>Manual Transcription</h2>
+
+                <p ng-if="interview.ManualTranscription.length > 0">
+                    <img width="50" height="50" src="https://metroui.org.ua/images/word2013icon.png" />
+                    <a target="_blank" ng-href="http://gpowell.blob.core.windows.net/files/ManualTranscriptionFor{{interview.id}}.doc">
+                        ManualTranscriptionFor{{interview.id}}.doc
+                    </a>
+                </p>
                 <p class="lines">{{ interview.ManualTranscription }}</p>
             </div>
             <div role="tabpanel" class="tab-pane" ng-class="{ active: selectedTab === 'automatic' }" id="automatic">

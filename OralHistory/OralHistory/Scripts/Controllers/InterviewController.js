@@ -93,6 +93,9 @@
         $scope.searchQuery = $routeParams.query;
         $scope.searchWithin($routeParams.query);
     }
+    else if ($routeParams.tab) {
+        $scope.selectedTab = $routeParams.tab
+    }
     else {
         $scope.selectedTab = 'details'
     }

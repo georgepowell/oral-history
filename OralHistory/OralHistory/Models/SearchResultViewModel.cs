@@ -15,6 +15,7 @@ namespace OralHistory.Models
     public class HighlightResult
     {
         public string Field { get; set; }
+        public string Tab { get; set; }
         public string[] Highlights { get; set; }
     }
 }

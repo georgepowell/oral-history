@@ -34,6 +34,9 @@ var configFunction = function ($routeProvider) {
     }).when('/interview/:id/search/:query', {
         controller: 'InterviewController',
         templateUrl: '/Partials/Interview',
+    }).when('/interview/:id/tab/:tab', {
+        controller: 'InterviewController',
+        templateUrl: '/Partials/Interview',
     }).otherwise({ redirectTo: '/home' });
 }
 

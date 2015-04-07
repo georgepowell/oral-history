@@ -9,7 +9,7 @@
 
     <h2><a ng-href="/#/interview/{{result.Id}}/search/{{q}}">{{ result.Title }}</a></h2>
     <div ng-repeat="highlightResult in result.Highlights">
-        <h4>{{ highlightResult.Field }}</h4>
+        <h4><a ng-href="/#/interview/{{result.Id}}/tab/{{highlightResult.Tab}}">{{ highlightResult.Field }}</a></h4>
         <ul>
             <li ng-repeat="highlight in highlightResult.Highlights" ng-bind-html="'... ' + highlight + '...'"></li>
         </ul>

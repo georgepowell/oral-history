@@ -6,8 +6,10 @@
     -webkit-box-orient: vertical;
 }
 
-em {
-    text-decoration: underline;
+.search-result em {
+    font-style: normal;
+    font-weight: bold;
+    color: chartreuse;
 }
 
 a {

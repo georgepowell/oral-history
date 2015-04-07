@@ -36,6 +36,7 @@ namespace OralHistory.Controllers
                 Title = (string)record.Properties["title"],
                 Highlights = record.Highlights.Keys.Select(key => new HighlightResult()
                 {
+                    Tab = key == "automatictranscription" ? "automatic" : key,
                     Field = ReadableKeys[key],
                     Highlights = record.Highlights[key]
                 }).ToList()
