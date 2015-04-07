@@ -12,7 +12,7 @@
 
     <br />
 
-    <p ng-if="currentSentence">...{{currentSentence}}...</p>
+    <p ng-if="currentSentence">"{{currentSentence}}"</p>
 
     <div role="tabpanel">
 
@@ -89,12 +89,13 @@
                     <table class="table table-bordered">
                         <tr ng-repeat="segment in interview.AutomaticTranscription.Segments track by $index"
                             class="segment"
-                            ng-class="{ active: (currentSeconds > segment.StartTime && currentSeconds < segment.EndTime) }">
+                            ng-class="{ active: (currentSeconds > segment.StartTime && currentSeconds < segment.EndTime) }"
+                            ng-if="segment.Sentence.length != 0">
                             <td ng-click="seek(segment.StartTime)" class="time-link">
                                 <a>{{segment.StartTime.toHHMMSS()}}</a>
                             </td>
                             <td>
-                                {{ segment.Sentence }}
+                                "{{ segment.Sentence }}"
                             </td>
                         </tr>
 
@@ -119,7 +120,7 @@
                             <a>{{segment.StartTime.toHHMMSS()}}</a>
                         </td>
                         <td>
-                            {{ segment.Sentence }}
+                            "{{ segment.Sentence }}"
                         </td>
                     </tr>
 

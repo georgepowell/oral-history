@@ -36,7 +36,7 @@ namespace OralHistory.Controllers
                 Title = (string)record.Properties["title"],
                 Highlights = record.Highlights.Keys.Select(key => new HighlightResult()
                 {
-                    Tab = key == "automatictranscription" ? "automatic" : key,
+                    Tab = KeysToTab[key],
                     Field = ReadableKeys[key],
                     Highlights = record.Highlights[key]
                 }).ToList()
@@ -50,7 +50,15 @@ namespace OralHistory.Controllers
             {"automatictranscription", "Automatic Transcription"},
             {"interviewer", "Interviewer"},
             {"interviewee", "Interviewee"},
-            
+        };
+
+        static Dictionary<string, string> KeysToTab = new Dictionary<string, string>
+        {
+            {"manualtranscription", "manual"},
+            {"summary", "summary"},
+            {"automatictranscription", "automatic"},
+            {"interviewer", "details"},
+            {"interviewee", "details"},
         };
     }
 }

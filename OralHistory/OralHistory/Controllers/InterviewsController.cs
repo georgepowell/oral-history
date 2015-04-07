@@ -64,7 +64,7 @@ namespace OralHistory.Controllers
         }
 
         public async Task<IEnumerable<Interview>> Get()
-        {
+        { 
             return container.ListBlobs().Select(blob =>
                 JsonConvert.DeserializeObject<Interview>(container.GetBlockBlobReference(blob.Uri.ToString().Split('/').Last()).DownloadText()));
         }
