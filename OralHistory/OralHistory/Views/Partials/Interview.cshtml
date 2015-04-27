@@ -1,8 +1,13 @@
-﻿<div ng-if="!interview">
+﻿<div ng-if="!interview" ng-show="passwordCode == 'ehdemo'">
     <h1>Loading...</h1>
 </div>
 
-<div ng-class="{ hidden: !interview }">
+<p ng-hide="passwordCode == 'ehdemo'">Please enter password to access</p>
+<input type="text" ng-model="passwordCode" ng-hide="passwordCode == 'ehdemo'" placeholder="password" ng-model-options="{ updateOn: 'blur'}" />
+<input type="button" ng-hide="passwordCode == 'ehdemo'" value="Go" />
+<div ng-class="{ hidden: !interview }" ng-show="passwordCode == 'ehdemo'">
+
+
     <iframe width="100%"
             height="166"
             scrolling="no"
@@ -49,7 +54,8 @@
 
                 <p ng-if="interview.SummaryLines && interview.SummaryLines.length > 0">
                     <img width="50" height="50" src="https://metroui.org.ua/images/word2013icon.png" />
-                    <a target="_blank" ng-href="http://gpowell.blob.core.windows.net/files/SummaryFor{{interview.id}}.docx">SummaryFor{{interview.id}}.docx
+                    <a target="_blank" ng-href="http://gpowell.blob.core.windows.net/files/SummaryFor{{interview.id}}.docx">
+                        SummaryFor{{interview.id}}.docx
                     </a>
                 </p>
 

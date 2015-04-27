@@ -17,6 +17,8 @@ var OralHistoryApp = angular.module('OralHistoryApp', ['ngRoute', 'ngSanitize'])
 OralHistoryApp.controller('LandingPageController', LandingPageController);
 OralHistoryApp.controller('SearchController', SearchController);
 OralHistoryApp.controller('InterviewController', InterviewController);
+OralHistoryApp.controller('UploadController', UploadController);
+OralHistoryApp.controller('UploadSoundController', UploadSoundController);
 OralHistoryApp.controller('HomeController', HomeController);
 
 OralHistoryApp.factory('Interviews', InterviewsApiFactory);
@@ -25,6 +27,12 @@ var configFunction = function ($routeProvider) {
     $routeProvider.when('/home', {
         controller: 'HomeController',
         templateUrl: '/Partials/Home',
+    }).when('/upload', {
+        controller: 'UploadController',
+        templateUrl: '/Partials/Upload',
+    }).when('/upload/:id', {
+        controller: 'UploadSoundController',
+        templateUrl: '/Partials/UploadSound',
     }).when('/search/:q', {
         controller: 'SearchController',
         templateUrl: '/Partials/Search',

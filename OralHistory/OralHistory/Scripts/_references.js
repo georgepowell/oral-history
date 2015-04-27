@@ -15,3 +15,5 @@
 /// <reference path="bootstrap.js" />
 /// <reference path="soundcloud.js" />
 /// <reference path="controllers/homecontroller.js" />
+/// <reference path="controllers/uploadcontroller.js" />
+/// <reference path="controllers/uploadsoundcontroller.js" />

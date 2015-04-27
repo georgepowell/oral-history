@@ -63,10 +63,16 @@ namespace OralHistory.Controllers
             return rtn;
         }
 
-        public async Task<IEnumerable<Interview>> Get()
-        { 
+        public IEnumerable<Interview> Get()
+        {
             return container.ListBlobs().Select(blob =>
-                JsonConvert.DeserializeObject<Interview>(container.GetBlockBlobReference(blob.Uri.ToString().Split('/').Last()).DownloadText()));
+            {
+                string uri = blob.Uri.ToString();
+                var split = uri.Split('/').Where(str => !String.IsNullOrWhiteSpace(str));
+                var last = split.Last();
+                var text = container.GetBlockBlobReference(last).DownloadText();
+                return JsonConvert.DeserializeObject<Interview>(text);
+            });
         }
     }
 }

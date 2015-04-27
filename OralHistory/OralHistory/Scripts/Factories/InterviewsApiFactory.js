@@ -23,10 +23,17 @@
           error(error);
     }
 
+    var createInterview = function (interview, success, error) {
+        $http.post('/api/Upload', interview).
+          success(success).
+          error(error);
+    }
+
     return {
         search: search,
         searchInterview: searchInterview,
         allInterviews: allInterviews,
+        createInterview: createInterview,
         lookup: lookup
     };
 }

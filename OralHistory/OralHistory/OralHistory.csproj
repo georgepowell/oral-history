@@ -155,6 +155,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UploadSoundController.cs" />
+    <Compile Include="Controllers\UploadController.cs" />
     <Compile Include="Controllers\InterviewsController.cs" />
     <Compile Include="Controllers\PartialsController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
@@ -168,7 +170,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Documents.cs" />
     <Compile Include="Services\DocumentVector.cs" />
+    <Compile Include="Services\InterviewCreator.cs" />
     <Compile Include="Services\InterviewSearch.cs" />
+    <Compile Include="Services\RandomStringGenerator.cs" />
     <Compile Include="Services\StopWords.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -196,6 +200,8 @@
     <Content Include="Scripts\AudioDemo.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\Controllers\HomeController.js" />
+    <Content Include="Scripts\Controllers\UploadSoundController.js" />
+    <Content Include="Scripts\Controllers\UploadController.js" />
     <Content Include="Scripts\Controllers\LandingPageController.js" />
     <Content Include="Scripts\Controllers\InterviewController.js" />
     <Content Include="Scripts\Controllers\SearchController.js" />
@@ -222,6 +228,8 @@
     <Content Include="Scripts\jquery-2.1.3.min.map" />
     <Content Include="Views\Partials\AudioDemo.cshtml" />
     <Content Include="Views\Partials\Home.cshtml" />
+    <Content Include="Views\Partials\Upload.cshtml" />
+    <Content Include="Views\Partials\UploadSound.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
